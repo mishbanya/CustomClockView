@@ -85,13 +85,15 @@ public class ClockView extends View {
     }
 
     private void drawHand(Canvas canvas, double angle, float length, int color) {
-        double angleRadians = Math.toRadians(-angle * 360 / 60 - 90);
+        double angleRadians = Math.toRadians(angle * 360 / 60 - 90);
         float startX = centerX;
         float startY = centerY;
         float endX = (float) (centerX + Math.cos(angleRadians) * length);
         float endY = (float) (centerY + Math.sin(angleRadians) * length);
 
+        int InitialColor = paint.getColor();
         paint.setColor(color);
         canvas.drawLine(startX, startY, endX, endY, paint);
+        paint.setColor(InitialColor);
     }
 }
